@@ -47,15 +47,10 @@ div {
   justify-content: center;
 }
 
-/* img {
-  max-width: 80%;
-} */
-
 img {
   min-height: 100px;
   max-height: 50vh;
   overflow: auto;
-  /* max-height: 50vh; */
 }
 
 .fade-enter-active,

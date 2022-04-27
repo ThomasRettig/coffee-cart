@@ -37,15 +37,16 @@ export default defineComponent({
 
 <style scoped>
 button.pay {
-  border: 4px solid black;
+  cursor: pointer;
+  border: 2px solid black;
   background: antiquewhite;
   margin: 0 6px;
-  font-size: xx-large;
+  font-size: x-large;
   padding: 6px 10px;
 }
 
 button.pay:hover {
-  border-color: goldenrod;
-  color: goldenrod;
+  border-color: darkorange;
+  color: darkorange;
 }
 </style>

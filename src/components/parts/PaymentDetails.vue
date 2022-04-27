@@ -10,15 +10,41 @@
       <form @submit.prevent="submit" aria-label="Payment form">
         <div>
           <label for="name">Name</label>
-          <input type="text" name="name" id="name" v-model="name" autocomplete="off" required>
+          <input
+            type="text"
+            name="name"
+            id="name"
+            v-model="name"
+            autocomplete="off"
+            required
+          />
         </div>
         <div>
           <label for="email">Email</label>
-          <input type="email" name="email" id="email" v-model="email" autocomplete="off" required>
+          <input
+            type="email"
+            name="email"
+            id="email"
+            v-model="email"
+            autocomplete="off"
+            required
+          />
         </div>
         <div aria-label="Promotion agreement">
-          <input type="checkbox" name="promotion" v-model="subscribe" id="promotion" aria-label="Promotion checkbox">
-          <label id="promotion-label" for="promotion" aria-label="Promotion message">I would like to receive order updates and promotional messages.</label>
+          <input
+            type="checkbox"
+            name="promotion"
+            v-model="subscribe"
+            id="promotion"
+            aria-label="Promotion checkbox"
+          />
+          <label
+            id="promotion-label"
+            for="promotion"
+            aria-label="Promotion message"
+            >I would like to receive order updates and promotional
+            messages.</label
+          >
         </div>
         <div>
           <button id="submit-payment" type="submit">Submit</button>
@@ -29,26 +55,26 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue';
+import { defineComponent } from "vue";
 
 export default defineComponent({
-  name: 'PaymentDetails',
-  props: ['isShow'],
-  emits: ['close'],
+  name: "PaymentDetails",
+  props: ["isShow"],
+  emits: ["close"],
   data() {
     return {
-      name: '',
-      email: '',
-      subscribe: false
-    }
+      name: "",
+      email: "",
+      subscribe: false,
+    };
   },
   methods: {
     closeModal() {
-      this.$emit('close');
+      this.$emit("close");
     },
     resetForm() {
-      this.name = '';
-      this.email = '';
+      this.name = "";
+      this.email = "";
       this.subscribe = false;
     },
     async submit() {
@@ -59,20 +85,24 @@ export default defineComponent({
         this.resetForm();
         this.closeModal();
 
-        this.$store.commit('cart/emptyCart');
-        this.$router.push('/');
-        this.$snackbar.showMessage({ content: 'Thanks for your purchase. Please check your email for payment.', color: 'success' });
+        this.$store.commit("cart/emptyCart");
+        this.$router.push("/");
+        this.$snackbar.showMessage({
+          content:
+            "Thanks for your purchase. Please check your email for payment.",
+          color: "success",
+        });
       }
     },
     async slow() {
-      const longTask = await import('../../api/slow.js');
-      performance.mark('submit-start');
+      const longTask = await import("../../api/slow.js");
+      performance.mark("submit-start");
       longTask.makeItSlow();
-      performance.mark('submit-end');
-      console.log('done');
-    }
-  }
-})
+      performance.mark("submit-end");
+      console.log("done");
+    },
+  },
+});
 </script>
 
 <style scoped>
@@ -82,11 +112,11 @@ export default defineComponent({
   padding-top: 100px; /* Location of the box */
   left: 0;
   top: 0;
-  width: 100%;  /* Full width */
+  width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  background-color: rgb(0,0,0); /* Fallback color */
-  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
 }
 
 /* Modal Content */
@@ -95,11 +125,10 @@ export default defineComponent({
   margin: auto;
   padding-inline: 20px;
   padding-block: 10px;
-  /* border: 1px solid #888; */
-  width: 80%;
+  width: 50vw;
   max-width: 600px;
   min-width: 300px;
-  border: 4px solid black;
+  border: 2px solid black;
 }
 
 /* The Close Button */
@@ -129,15 +158,23 @@ section {
 }
 
 form label {
+  user-select: none;
   margin-inline-end: 10px;
   padding-block: 10px;
+}
+
+form input[type="checkbox"],
+label {
+  cursor: pointer;
 }
 
 form input[type="checkbox"] {
   margin-inline-end: 10px;
 }
 
-form input[type="email"], form input[type="text"] {
+form input[type="email"],
+form input[type="text"] {
+  border: 2px solid black;
   padding-block: 4px;
   padding-inline: 10px;
 }
@@ -152,10 +189,12 @@ form div:last-of-type {
 }
 
 form button {
-  border: 4px solid black;
+  cursor: pointer;
+  border: 2px solid black;
   background: antiquewhite;
   margin: 0 6px;
-  font-size: x-large;
+  font-size: 20px;
+  font-weight: 500;
 }
 
 form button:hover {
@@ -165,15 +204,5 @@ form button:hover {
 
 p {
   margin-block: 10px;
-}
-
-.size {
-  animation: mymove 2s infinite;
-}
-
-@keyframes mymove {
-  from {background-color: rgb(127, 195, 179); }
-  to {background-color: rgb(222, 98, 38);}
-  /* to {background-color: rgb(178, 187, 140);} */
 }
 </style>

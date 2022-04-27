@@ -7,7 +7,7 @@
       </div>
       <div class="buttons">
         <button class="yes" @click="addToCart(coffee.name); close();">Yes, of course!</button>
-        <button @click="close()">Nah, I'll skip.</button>
+        <button @click="close()">Nah, I’ll skip</button>
       </div>
 
     </div>
@@ -55,8 +55,15 @@ export default defineComponent({
 }
 
 .buttons button {
-  min-width: 160px;
+  cursor: pointer;
+  min-width: 130px;
   border: 2px solid black;
+  padding: 5px;
+  transition: 0.2s;
+}
+
+.buttons button:hover {
+  transform: scale(1.05);
 }
 
 .yes {
@@ -75,6 +82,7 @@ export default defineComponent({
   margin-inline: 20px;
   text-align: center;
 }
+
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 3s ease;

@@ -27,11 +27,3 @@ export default defineComponent({
   },
 });
 </script>
-
-<style>
-body {
-  font-size: 18px;
-  background: rgb(224, 255, 255, 0.15);
-  font-family: "Lobster", Times;
-}
-</style>

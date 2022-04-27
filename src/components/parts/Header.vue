@@ -1,10 +1,10 @@
 <template>
   <ul>
     <li>
-      <router-link aria-label="Menu page" to="/">menu</router-link>
+      <router-link aria-label="Menu page" to="/">Menu</router-link>
     </li>
     <li>
-      <router-link aria-label="Cart page" to="/cart">cart ({{ cartCount }})</router-link>
+      <router-link aria-label="Cart page" to="/cart">Cart ({{ cartCount }})</router-link>
     </li>
   </ul>
 </template>
@@ -27,7 +27,7 @@ export default defineComponent({
 ul {
   display: flex;
   justify-content: center;
-  border-bottom: 4px solid black;
+  border-bottom: 2px solid #ddd;
   padding: 0;
   position: sticky;
   top: 0;
@@ -38,29 +38,27 @@ ul {
 
 li {
   list-style: none;
-  padding: 10px 10px;
+  padding: 10px 5px 10px 5px;
 }
 
 a {
   color: black;
-  font-weight: bold;
+  font-weight: 600;
   text-decoration: none;
 }
 
 a:hover {
   color: grey;
   text-decoration: none;
-  border-bottom: 1px dotted grey;
 }
 
 a.router-link-active {
-  color: goldenrod;
-  border-bottom: 1px dotted goldenrod;
+  color: darkorange;
 }
 
 @media (min-width: 500px) {
   li {
-    padding: 10px 20px;
+    padding: 10px 8px 10px 8px;
   }
 
   a {

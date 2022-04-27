@@ -25,6 +25,7 @@ export default defineComponent({
 .cup {
   display: flex;
   will-change: transform;
+  transition: 0.2s ease;
 }
 
 .cup-body {
