@@ -1,8 +1,8 @@
-import { slowProcessing } from '../../utils';
+import { slowProcessing } from "../../utils";
 
 // initial state
 const state = () => ({
-  list: []
+  list: [],
 });
 
 // getters
@@ -13,7 +13,11 @@ const getters = {
       .reduce((acc: any, curr: any) => acc + curr, 0),
   cartTotal: (state: any, _: any, rootState: any) =>
     state.list
-      .map((c: any) => rootState.coffees.list.find((x: any) => x.name === c.name).price * c.quantity)
+      .map(
+        (c: any) =>
+          rootState.coffees.list.find((x: any) => x.name === c.name).price *
+          c.quantity
+      )
       .reduce((acc: any, curr: any) => acc + curr, 0),
   cartList: (state: any, _: any, rootState: any) => {
     const results = state.list
@@ -27,64 +31,66 @@ const getters = {
           quantity: item.quantity,
           unitPrice: price,
           price: item.quantity * price, // sum quantity
-          ...props
+          ...props,
         };
       })
       .sort((a: any, b: any) => (a.name < b.name ? -1 : 1));
 
     return slowProcessing(results);
-  }
-}
+  },
+};
 
 // actions
-const actions = {
-}
+const actions = {};
 
 // mutations
 const mutations = {
   setCartList(state: any, { items }: any) {
-    state.list = items
+    state.list = items;
   },
   addToCart(state: any, coffee: any) {
-    const { quantity = 0 } = state.list.find((x: any) => x.name === coffee) || {}
+    const { quantity = 0 } =
+      state.list.find((x: any) => x.name === coffee) || {};
 
     const list = [
       ...state.list.filter((x: any) => x.name !== coffee),
       {
-        name: coffee, quantity: quantity + 1
-      }
+        name: coffee,
+        quantity: quantity + 1,
+      },
     ];
 
-    state.list = list
+    state.list = list;
   },
-  emptyCart(state:any) {
-    state.list = []
+  emptyCart(state: any) {
+    state.list = [];
   },
   removeCartItem(state: any, coffee: any) {
-    const list = [...state.list.filter((x: any) => x.name !== coffee)]
+    const list = [...state.list.filter((x: any) => x.name !== coffee)];
 
-    state.list = list
+    state.list = list;
   },
   addOneCartItem(state: any, coffee: any) {
-    mutations.addToCart(state, coffee)
+    mutations.addToCart(state, coffee);
   },
   removeOneCartItem(state: any, coffee: any) {
     const item = state.list.find((x: any) => x.name === coffee);
 
     const list = [
       ...state.list.filter((x: any) => x.name !== coffee),
-      ...(item.quantity - 1 <= 0 ? [] : [{ name: item.name, quantity: item.quantity - 1 }])
+      ...(item.quantity - 1 <= 0
+        ? []
+        : [{ name: item.name, quantity: item.quantity - 1 }]),
     ];
 
-    state.list = list
-  }
-
-}
+    state.list = list;
+  },
+};
 
 export default {
   namespaced: true,
   state,
   getters,
   actions,
-  mutations
-}
+  mutations,
+};
