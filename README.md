@@ -1,7 +1,8 @@
 # Coffee cart
 
 This is a fork of the [original repo](https://github.com/jecfish/coffee-cart).
-https://coffee-kart.netlify.app/. This demo created with Vue 3 + Typescript + Vite.
+
+Live demo: https://coffee-kart.netlify.app/. The site is created with Vue 3 + Typescript + Vite.
 
 ## Getting started
 
